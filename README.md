@@ -1,1 +1,2 @@
 # THE WEATHER DETECTOR
+## Install
