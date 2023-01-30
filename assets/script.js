@@ -12,8 +12,8 @@ var wind = document.querySelector('#wind')
 
 //Convert Celsius to Fahrenheit
 
-function convertion(val){
-    return (val + 32).toFixed(1.8)
+function convertCtoF(celsiusValue) {
+    return ((celsiusValue * 9) / 5) + 32;
 }
 
 
