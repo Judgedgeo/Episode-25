@@ -28,12 +28,10 @@ console.log(data);
 });
 
     fetch(queryURL)
-
     .then(response => response.json())
     .then(data => {
-        var firstCity = data[0];
-
-        console.log(data);
+    var firstCity = data[0];
+    console.log(data);
 
         var nameval = data.name
         var descrip = data.weather[0].description
