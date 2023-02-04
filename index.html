@@ -1,41 +1,59 @@
-
 <!DOCTYPE html>
-<link lang="en">
-<link>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style.css">
+
     <title>The Weather Detector</title>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"></link>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/style.css"></link>
-
 </head>
-<body>
+<body onload="DefaultScreen()">
+    <center>
+        <h1 id="Para1">Your 5 Days Weather Forecast</h1>
+        <p id="inputContainer">City: <input type="text" id="cityInput"></p>
+        <button type="button" onclick="GetInfo()">Click Me</button>
+        <h2 id="cityName">---Austin---</h2>
+    </center>
 
-    <div class="container-fluid">
-        <section class="main">
-        </section>
-      </div>
-
-    <class="inputs">
-
-        <input type="text" placeholder="Enter any city..." id="cityinput">
-        <input type="submit" value="Submit" id="add">
-
-        <!--<button placeholder="submit" id="add"></button> -->
-
-     </section>
-
-     <section class="display">
-        <div class="wrapper">
-            <h2 id="cityoutput"></h2>
-            <p id="description"></p>
-            <p id="temp"></p>
-            <p id="wind"></p>
+    <div id = "weatherContainer">
+        <div id="iconsContainer">
+            <div class = "icons">
+                <p class="weather" id="day1"></p>
+                <div class="image"><img src="/assets/IMG/G.png" class="imgClass" id="img1"></div>
+                <p class="minValues" id="day1Min">Loading...</p>
+                <p class="maxValues" id="day1Max">Loading...</p>
+            </div>
+            <div class = "icons">
+                <p class="weather" id="day2"></p>
+                <div class="image"><img src="/assets/IMG/G.png" class="imgClass" id="img2"></div>
+                <p class="minValues" id="day2Min">Loading...</p>
+                <p class="maxValues" id="day2Max">Loading...</p>
+            </div>
+            <div class = "icons">
+                <p class="weather" id="day3"></p>
+                <div class="image"><img src="/assets/IMG/G.png" class="imgClass" id="img3"></div>
+                <p class="minValues" id="day3Min">Loading...</p>
+                <p class="maxValues" id="day3Max">Loading...</p>
+            </div>
+            <div class = "icons">
+                <p class="weather" id="day4"></p>
+                <div class="image"><img src="/assets/IMG/G.png" class="imgClass" id="img4"></div>
+                <p class="minValues" id="day4Min">Loading...</p>
+                <p class="maxValues" id="day4Max">Loading...</p>
+            </div>
+            <div class = "icons">
+                <p class="weather" id="day5"></p>
+                <div class="image"><img src="/assets/IMG/G.png" class="imgClass" id="img5"></div>
+                <p class="minValues" id="day5Min">Loading...</p>
+                <p class="maxValues" id="day5Max">Loading...</p>
+            </div>
         </div>
-      </section>
-      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-      <script src="/assets/script.js"></script>
+    </div>
+
+
+        <script src="./assets/script.js"></script>
+
 
 </body>
 </html>
