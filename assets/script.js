@@ -1,53 +1,60 @@
 
-var inputval = document.getElementById('cityinput').value
-var btn = document.querySelector('#add');
-var city = document.querySelector('#cityoutput')
-var descrip = document.querySelector('#description')
-var temp = document.querySelector('#temp')
-var wind = document.querySelector('#wind')
+function GetInfo() {
 
-//API key
+    var newName = document.getElementById("cityInput");
+    var cityName = document.getElementById("cityName");
+    cityName.innerHTML = "--"+newName.value+"--";
 
-
-//Convert Celsius to Fahrenheit
-function convertCtoF(celsiusValue) {
-    return ((celsiusValue * 9) / 5) + 32;
-}
-$(document).ready(function(){
-    btn.addEventListener('click', function(){
-    var apiKey = "796a84f7f2e1c3e2323199abc3a866b6";
-    var city = $("#cityinput").val()
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
-    var fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey + "&units=imperial"
-    fetch(fiveDayURL)
+fetch('http://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid=6eef10960e7e69d9cf4cbeecaf9a3580')
 .then(response => response.json())
 .then(data => {
-    var firstCity = data[0];
 
-console.log(data);
-});
+    //Getting the min and max values for each day
+    for(i = 0; i<5; i++){
+        document.getElementById("day" + (i+1) + "Min").innerHTML = "Min: " + Number(data.list[i].main.temp_min - 273.15).toFixed(1)+ "°";
+        //Number(1.3450001).toFixed(2); // 1.35
+    }
 
-    fetch(queryURL)
-    .then(response => response.json())
-    .then(data => {
-    var firstCity = data[0];
-    console.log(data);
+    for(i = 0; i<5; i++){
+        document.getElementById("day" + (i+1) + "Max").innerHTML = "Max: " + Number(data.list[i].main.temp_max - 273.15).toFixed(2) + "°";
+    }
+    //------------------------------------------------------------
 
-        var nameval = data.name
-        var descrip = data.weather[0].description
-        var tempature = data.main.temp
-        var wndspd = data.wind.speed
-
-        city.innerHTML=`Weather of <span>${nameval}<span>`
-        temp.innerHTML = `Temperature: <span>${ convertion(tempature)} C</span>`
-        description.innerHTML = `Sky Conditions: <span>${descrip}<span>`
-        wind.innerHTML = `Wind Speed: <span>${wndspd} km/h<span>`
-    })
-    .catch(err => alert('You entered Wrong city name'))
-});
-});
+    //Getting Weather Icons
+     for(i = 0; i<5; i++){
+        document.getElementById("img" + (i+1)).src = "http://openweathermap.org/img/wn/"+
+        data.list[i].weather[0].icon
+        +".png";
+    }
+    //------------------------------------------------------------
+    console.log(data)
 
 
+})
 
-//geo coding  api.openweathermap.org/geo/1.0/direct?q={city name}&appid={6eef10960e7e69d9cf4cbeecaf9a3580}
+.catch(err => alert("Something Went Wrong: Try Checking Your Internet Coneciton"))
+}
 
+function DefaultScreen(){
+    document.getElementById("cityInput").defaultValue = "Austin";
+    GetInfo();
+}
+
+
+//Getting and displaying the text for the upcoming five days of the week
+var d = new Date();
+var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",];
+
+//Function to get the correct integer for the index of the days array
+function CheckDay(day){
+    if(day + d.getDay() > 6){
+        return day + d.getDay() - 7;
+    }
+    else{
+        return day + d.getDay();
+    }
+}
+
+    for(i = 0; i<5; i++){
+        document.getElementById("day" + (i+1)).innerHTML = weekday[CheckDay(i)];
+    }
