@@ -23,10 +23,10 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid
         data.list[i].weather[0].icon
         +".png";
     }
-    console.log(data)
+    // console.log(data)
 
 })
-.catch(err => alert("Something Went Wrong: Try Checking Your Internet Coneciton"))
+.catch(err => alert("OOPS:TRAY AGAIN"))
 }
 
 function DefaultScreen(){
