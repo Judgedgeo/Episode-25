@@ -13,7 +13,7 @@ function GetInfo() {
     .then(data => {
       for (var i = 0; i<6; i++) {
         var weatherItem = data.list[i].main;
-        // temp_min, temp_max should now already be in F, because you asked (units=imperial) for it in different units
+        // temp_min, temp_max covert to F
         document.getElementById("day" + (i+1) + "Min").innerHTML = "Min: " + weatherItem.temp_min + "°";
         document.getElementById("day" + (i+1) + "Max").innerHTML = "Max: " + weatherItem.temp_max + "°";
       }
