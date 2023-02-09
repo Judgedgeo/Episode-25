@@ -1,4 +1,3 @@
-
 function GetInfo() {
 
     var newName = document.getElementById("cityInput");
@@ -18,14 +17,12 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid
         document.getElementById("day" + (i+1) + "Max").innerHTML = "Max: " + Number(data.list[i].main.temp_max - 273.15).toFixed(2) + "°";
     }
 
-
     //Getting Weather Icons
      for(i = 0; i<5; i++){
         document.getElementById("img" + (i+1)).src = "http://openweathermap.org/img/wn/"+
         data.list[i].weather[0].icon
         +".png";
     }
-
     console.log(data)
 
 })
@@ -37,11 +34,9 @@ function DefaultScreen(){
     GetInfo();
 }
 
-
 //Displaying the upcoming five days of the week
 var d = new Date();
 var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",];
-
 
 function CheckDay(day){
     if(day + d.getDay() > 6){
