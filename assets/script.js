@@ -3,30 +3,28 @@ function GetInfo() {
     var newName = document.getElementById("cityInput");
     var cityName = document.getElementById("cityName");
     cityName.innerHTML = "--"+newName.value+"--";
+    var apiEndpoint = 'http://api.openweathermap.org/data/2.5/forecast'
+    apiEndpoint += '?q=' + encodeURIComponent(newName.value);
+    apiEndpoint += '&units=imperial';
+    apiEndpoint += '&appid=6eef10960e7e69d9cf4cbeecaf9a3580';
 
-fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid=6eef10960e7e69d9cf4cbeecaf9a3580')
-.then(response => response.json())
-.then(data => {
-
-    //Getting the min and max values for each day
-    for(i = 0; i<5; i++){
-        document.getElementById("day" + (i+1) + "Min").innerHTML = "Min: " + Number(data.list[i].main.temp_min - 273.15).toFixed(1)+ "°";
-    }
-
-    for(i = 0; i<5; i++){
-        document.getElementById("day" + (i+1) + "Max").innerHTML = "Max: " + Number(data.list[i].main.temp_max - 273.15).toFixed(2) + "°";
-    }
-
-    //Getting Weather Icons
-     for(i = 0; i<5; i++){
+    fetch(apiEndpoint)
+    .then(response => response.json())
+    .then(data => {
+      for (var i = 0; i<6; i++) {
+        var weatherItem = data.list[i].main;
+        // temp_min, temp_max should now already be in F, because you asked (units=imperial) for it in different units
+        document.getElementById("day" + (i+1) + "Min").innerHTML = "Min: " + weatherItem.temp_min + "°";
+        document.getElementById("day" + (i+1) + "Max").innerHTML = "Max: " + weatherItem.temp_max + "°";
+      }
+      for(i = 0; i<6; i++){
         document.getElementById("img" + (i+1)).src = "http://openweathermap.org/img/wn/"+
         data.list[i].weather[0].icon
         +".png";
     }
-    // console.log(data)
-
 })
-.catch(err => alert("OOPS:TRY AGAIN"))
+
+.catch(err => alert("OOPS: YOU BROKE IT AGAIN"))
 }
 
 function DefaultScreen(){
@@ -47,6 +45,19 @@ function CheckDay(day){
     }
 }
 
-    for(i = 0; i<5; i++){
+    for(i = 0; i<6; i++){
         document.getElementById("day" + (i+1)).innerHTML = weekday[CheckDay(i)];
     }
+
+// setting local storage - tied to submit button
+$("#search").on("click", function() {
+let userInput = document.getElementById("cityInput").value;
+showHistory();
+window.localStorage.setItem("Last Searched", userInput);
+});
+
+//displays local storage onto page
+function showHistory() {
+let history = document.getElementById("history")
+history.innerHTML = localStorage.getItem("Last Searched");
+}

@@ -12,18 +12,22 @@
     <center>
         <h1 id="Para1">Your 5 Days Weather Forecast</h1>
         <p id="inputContainer">City: <input type="text" id="cityInput"></p>
-        <button type="button" onclick="GetInfo()">Click Me</button>
-        <h2 id="cityName">---Austin---</h2>
+        <button type="button" id="search" onclick="GetInfo()">Submit</button>
+        <h2 id="cityName"></h2>
+        <ul id="history"></ul>
     </center>
+
+    <div id = "currentContainer">
+        <div id="iconsContainer2"></div>
+    <div class = "icons2">
+        <p class="weather" id="day1"></p>
+        <div class="image"><img src="./assets/IMG/G.png" class="imgClass" id="img1"></div>
+        <p class="minValues" id="day1Min">Working...</p>
+        <p class="maxValues" id="day1Max">Working...</p>
+    </div>
 
     <div id = "weatherContainer">
         <div id="iconsContainer">
-            <div class = "icons">
-                <p class="weather" id="day1"></p>
-                <div class="image"><img src="./assets/IMG/G.png" class="imgClass" id="img1"></div>
-                <p class="minValues" id="day1Min">Working...</p>
-                <p class="maxValues" id="day1Max">Working...</p>
-            </div>
             <div class = "icons">
                 <p class="weather" id="day2"></p>
                 <div class="image"><img src="./assets/IMG/G.png" class="imgClass" id="img2"></div>
@@ -36,6 +40,7 @@
                 <p class="minValues" id="day3Min">Working...</p>
                 <p class="maxValues" id="day3Max">Working...</p>
             </div>
+
             <div class = "icons">
                 <p class="weather" id="day4"></p>
                 <div class="image"><img src="./assets/IMG/G.png" class="imgClass" id="img4"></div>
@@ -48,9 +53,17 @@
                 <p class="minValues" id="day5Min">Working...</p>
                 <p class="maxValues" id="day5Max">Working...</p>
             </div>
+            <div class = "icons">
+                <p class="weather" id="day6"></p>
+                <div class="image"><img src="./assets/IMG/G.png" class="imgClass" id="img6"></div>
+                <p class="minValues" id="day6Min">Working...</p>
+                <p class="maxValues" id="day6Max">Working...</p>
+            </div>
         </div>
     </div>
 
+</div>
+</div>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="./assets/script.js"></script>
