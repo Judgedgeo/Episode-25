@@ -3,7 +3,7 @@ function GetInfo() {
     var newName = document.getElementById("cityInput");
     var cityName = document.getElementById("cityName");
     cityName.innerHTML = "--"+newName.value+"--";
-    var apiEndpoint = 'http://api.openweathermap.org/data/2.5/forecast'
+    var apiEndpoint = 'https://api.openweathermap.org/data/2.5/forecast'
     apiEndpoint += '?q=' + encodeURIComponent(newName.value);
     apiEndpoint += '&units=imperial';
     apiEndpoint += '&appid=6eef10960e7e69d9cf4cbeecaf9a3580';
@@ -18,7 +18,7 @@ function GetInfo() {
         document.getElementById("day" + (i+1) + "Max").innerHTML = "Max: " + weatherItem.temp_max + "°";
       }
       for(i = 0; i<6; i++){
-        document.getElementById("img" + (i+1)).src = "http://openweathermap.org/img/wn/"+
+        document.getElementById("img" + (i+1)).src = "https://openweathermap.org/img/wn/"+
         data.list[i].weather[0].icon
         +".png";
     }
