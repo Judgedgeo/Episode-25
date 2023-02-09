@@ -4,7 +4,7 @@ function GetInfo() {
     var cityName = document.getElementById("cityName");
     cityName.innerHTML = "--"+newName.value+"--";
 
-fetch('http://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid=6eef10960e7e69d9cf4cbeecaf9a3580')
+fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid=6eef10960e7e69d9cf4cbeecaf9a3580')
 .then(response => response.json())
 .then(data => {
 
@@ -26,7 +26,7 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid
     // console.log(data)
 
 })
-.catch(err => alert("OOPS:TRAY AGAIN"))
+.catch(err => alert("OOPS:TRY AGAIN"))
 }
 
 function DefaultScreen(){
