@@ -2,36 +2,44 @@
 
 ## Description
 
-- Quiz you can test your knowledge in JS.
+- The Weather App that you can check for current and your 5 day forecast.
 
 ## Installation
 
-- Find it on the web at https://judgedgeo.github.io/
+- Find it on the web at https://judgedgeo.github.io/The-Weather-Detector/
 - Currently using HTML, CSS, and JS to execute this program.
 - Please leave any notes on any changes you may perform.
 
 ## Usage
 
-- Click on the START button to begin your quiz, you have 1 minute to complete 4 questions.
+- Type in the City you would like have the weather for, and click the Submit button.
 
-![image](https://user-images.githubusercontent.com/115055273/211437342-b5b9c8d2-cf61-4d68-bd64-b765c46ba3d2.png)
+![image](https://user-images.githubusercontent.com/115055273/217969372-580939f6-0ae1-4277-ac5f-fdb830d1a26e.png)
 
-- Select your answer and then click NEXT.
+- Current Day weather will appear in box on the left of the screen.
 
-![image](https://user-images.githubusercontent.com/115055273/211437803-6ea32163-6944-4fd7-a231-7b07dce076ba.png)
+![image](https://user-images.githubusercontent.com/115055273/217969509-7a9d301b-d960-4a1d-91ab-9ac97119b92c.png)
 
 
-- Once you have answered all 4 questions you may click on RESTART to try again.
+- The 5 day forecast will show in the center of the screen.
 
-![image](https://user-images.githubusercontent.com/115055273/211437958-8561a54f-446e-466a-8f62-9c4987d8c4cd.png)
+![image](https://user-images.githubusercontent.com/115055273/217969570-18d8150b-f3ef-4fe5-a7e7-64966cba2b25.png)
+
+- The previous city you searched for will appear in the box below the current city.
+
+![image](https://user-images.githubusercontent.com/115055273/217969841-46c2e2b3-fc56-4571-b06d-ffba049be5fa.png)
 
 ## Credits
 
-Collaborators = George Jordan (xasdfaf)
+Collaborators:
 
-Tutorials / References to complete this project
-https://stackoverflow.com/
-https://www.w3schools.com/default.asp
+- George Jordan (xasdfaf)
+- Brian Mojica (Brainybrian316)
+
+Tutorials / References to complete this project:
+
+- https://stackoverflow.com/
+- https://www.w3schools.com/default.asp
 
 ## License
 
