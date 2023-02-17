@@ -1,33 +1,45 @@
-function GetInfo() {
+function GetInfo(btnCity) {
 
-    var newName = document.getElementById("cityInput");
+    var newName = btnCity || document.getElementById("cityInput").value;
     var cityName = document.getElementById("cityName");
-    cityName.innerHTML = "--"+newName.value+"--";
+    cityName.innerHTML = "--" + newName + "--";
     var apiEndpoint = 'https://api.openweathermap.org/data/2.5/forecast'
-    apiEndpoint += '?q=' + encodeURIComponent(newName.value);
+    apiEndpoint += '?q=' + encodeURIComponent(newName);
+    apiEndpoint += '&humidity';
+    apiEndpoint += '&wind';
     apiEndpoint += '&units=imperial';
     apiEndpoint += '&appid=6eef10960e7e69d9cf4cbeecaf9a3580';
 
     fetch(apiEndpoint)
-    .then(response => response.json())
-    .then(data => {
-      for (var i = 0; i<6; i++) {
-        var weatherItem = data.list[i].main;
-        // temp_min, temp_max covert to F
-        document.getElementById("day" + (i+1) + "Min").innerHTML = "Min: " + weatherItem.temp_min + "°";
-        document.getElementById("day" + (i+1) + "Max").innerHTML = "Max: " + weatherItem.temp_max + "°";
-      }
-      for(i = 0; i<6; i++){
-        document.getElementById("img" + (i+1)).src = "https://openweathermap.org/img/wn/"+
-        data.list[i].weather[0].icon
-        +".png";
-    }
-})
+        .then(response => response.json())
+        .then(data => {
+            for (var i = 0; i < 6; i++) {
+                var weatherItem = data.list[i].main;
+                // temp_min, temp_max
+                document.getElementById("day" + (i + 1) + "Min").innerHTML = "Min: " + weatherItem.temp_min + "°";
+                document.getElementById("day" + (i + 1) + "Max").innerHTML = "Max: " + weatherItem.temp_max + "°";
+                let history = JSON.parse(localStorage.getItem("history")) || []
+                if (!history.includes(newName.toLowerCase())) {
+                    history.push(newName.toLowerCase())
+                    showHistory(newName);
+                    window.localStorage.setItem("history", JSON.stringify(history));
+                }
+                // wind
 
-.catch(err => alert("OOPS: YOU BROKE IT AGAIN"))
+                //Humidity
+
+            }
+            for (i = 0; i < 6; i++) {
+                document.getElementById("img" + (i + 1)).src = "https://openweathermap.org/img/wn/" +
+                    data.list[i].weather[0].icon
+                    + ".png";
+            }
+        })
+
+        .catch(err => alert("OOPS: YOU BROKE IT AGAIN"))
 }
 
-function DefaultScreen(){
+function DefaultScreen() {
     document.getElementById("cityInput").defaultValue = "Austin";
     GetInfo();
 }
@@ -36,28 +48,43 @@ function DefaultScreen(){
 var d = new Date();
 var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",];
 
-function CheckDay(day){
-    if(day + d.getDay() > 6){
+function CheckDay(day) {
+    if (day + d.getDay() > 6) {
         return day + d.getDay() - 7;
     }
-    else{
+    else {
         return day + d.getDay();
     }
 }
 
-    for(i = 0; i<6; i++){
-        document.getElementById("day" + (i+1)).innerHTML = weekday[CheckDay(i)];
-    }
+for (i = 0; i < 6; i++) {
+    document.getElementById("day" + (i + 1)).innerHTML = weekday[CheckDay(i)];
+}
 
 // setting local storage - tied to submit button
-$("#search").on("click", function() {
-let userInput = document.getElementById("cityInput").value;
-showHistory();
-window.localStorage.setItem("Last Searched", userInput);
+$("#search").on("click", function () {
+    let userInput = document.getElementById("cityInput").value;
+    let history = JSON.parse(localStorage.getItem("history")) || []
+    if (!history.includes(userInput.toLowerCase())) {
+        history.push(userInput.toLowerCase())
+        showHistory(userInput);
+        window.localStorage.setItem("history", JSON.stringify(history));
+    }
+
 });
 
 //displays local storage onto page
-function showHistory() {
-let history = document.getElementById("history")
-history.innerHTML = localStorage.getItem("Last Searched");
+function showHistory(city) {
+    let historyEL = document.getElementById("history")
+    let history = JSON.parse(localStorage.getItem("history")) || [];
+    // for (let i = 0; i < history.length; i++) {
+    let button = document.createElement("button")
+    button.textContent = city
+    button.value = city
+    button.addEventListener("click", function (event) {
+        GetInfo(event.target.value)
+    })
+    historyEL.appendChild(button)
+
+    // }
 }
