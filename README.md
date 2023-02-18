@@ -30,7 +30,7 @@
 ![image](https://user-images.githubusercontent.com/115055273/217969841-46c2e2b3-fc56-4571-b06d-ffba049be5fa.png)
 
 ## Known Issues
-- Need to add Humidity, Wind and be able to pull Weather from previous city.
+- Need to add Humidity, and Humidity.
 
 ## Credits
 
