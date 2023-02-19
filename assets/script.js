@@ -5,10 +5,10 @@ function GetInfo(btnCity) {
     cityName.innerHTML = "--" + newName + "--";
     var apiEndpoint = 'https://api.openweathermap.org/data/2.5/forecast'
     apiEndpoint += '?q=' + encodeURIComponent(newName);
-    apiEndpoint += '&humidity';
-    apiEndpoint += '&wind';
     apiEndpoint += '&units=imperial';
     apiEndpoint += '&appid=6eef10960e7e69d9cf4cbeecaf9a3580';
+    apiEndpoint += '&humidity';
+    apiEndpoint += '&wind';
 
     fetch(apiEndpoint)
         .then(response => response.json())
@@ -16,17 +16,18 @@ function GetInfo(btnCity) {
             for (var i = 0; i < 6; i++) {
                 var weatherItem = data.list[i].main;
                 // temp_min, temp_max
-                document.getElementById("day" + (i + 1) + "Min").innerHTML = "Min: " + weatherItem.temp_min + "°";
-                document.getElementById("day" + (i + 1) + "Max").innerHTML = "Max: " + weatherItem.temp_max + "°";
+                document.getElementById("day" + (i + 1) + "Min").innerHTML = " Min: " + weatherItem.temp_min + "°";
+                document.getElementById("day" + (i + 1) + "Max").innerHTML = " Max: " + weatherItem.temp_max + "°";
+                document.getElementById("day" + (i + 1) + "Humidity").innerHTML = " Humidity: " + weatherItem.humidity + "%";
+                document.getElementById("day" + (i + 1) + "Speed").innerHTML = " Wind: " + weatherItem.speed + "";
+
                 let history = JSON.parse(localStorage.getItem("history")) || []
                 if (!history.includes(newName.toLowerCase())) {
                     history.push(newName.toLowerCase())
                     showHistory(newName);
                     window.localStorage.setItem("history", JSON.stringify(history));
                 }
-                // wind
 
-                //Humidity
 
             }
             for (i = 0; i < 6; i++) {
@@ -77,7 +78,6 @@ $("#search").on("click", function () {
 function showHistory(city) {
     let historyEL = document.getElementById("history")
     let history = JSON.parse(localStorage.getItem("history")) || [];
-    // for (let i = 0; i < history.length; i++) {
     let button = document.createElement("button")
     button.textContent = city
     button.value = city
@@ -85,6 +85,4 @@ function showHistory(city) {
         GetInfo(event.target.value)
     })
     historyEL.appendChild(button)
-
-    // }
 }
