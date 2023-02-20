@@ -43,7 +43,7 @@ function GetInfo(btnCity) {
 }
 
 function DefaultScreen() {
-    document.getElementById("cityInput").defaultValue = "Austin";
+    document.getElementById("cityInput").defaultValue = "Round Rock";
     GetInfo();
 }
 
