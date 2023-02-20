@@ -1,26 +1,28 @@
-*{
+* {
   color: rgb(7, 1, 1);
   background: rgb(7, 200, 243);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#cityInput{
+#cityInput {
   margin: 3px;
-  padding:5px;
-  font-size:20px;
-  font-weight:bold;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
   width: 400px;
-  }
-
-#cityName, #inputContainer,button{
-margin: 3px;
-padding:5px;
-text-align:center;
-font-size:20px;
-font-weight:bold;
 }
 
-#weatherContainer{
+#cityName,
+#inputContainer,
+button {
+  margin: 3px;
+  padding: 5px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#weatherContainer {
   position: absolute;
   top: 70%;
   left: 50%;
@@ -32,7 +34,7 @@ font-weight:bold;
   border-radius: 10px;
 }
 
-#iconsContainer{
+#iconsContainer {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -44,7 +46,7 @@ font-weight:bold;
   border-radius: 10px;
 }
 
-.icons2{
+.icons2 {
   display: flexbox;
   position: absolute;
   height: 300px;
@@ -54,7 +56,7 @@ font-weight:bold;
   border-radius: 10px;
 }
 
-.icons{
+.icons {
   display: inline;
   float: left;
   height: 300px;
@@ -65,17 +67,17 @@ font-weight:bold;
   aspect-ratio: 3/2;
 }
 
-.image{
+.image {
   height: 140px;
   width: 100%;
 }
 
-.imgClass{
+.imgClass {
   height: 140px;
   width: 100%;
 }
 
-.weather{
+.weather {
   margin: 5px;
   background-color: rgb(106, 215, 255);
   border-radius: 5px;
@@ -83,7 +85,7 @@ font-weight:bold;
   font-weight: bold;
 }
 
-.minValues{
+.minValues {
   text-align: center;
   display: inline-block;
   border-radius: 5px;
@@ -94,7 +96,7 @@ font-weight:bold;
   margin-left: 5px;
 }
 
-.maxValues{
+.maxValues {
   text-align: center;
   display: inline-block;
   border-radius: 5px;
@@ -106,13 +108,12 @@ font-weight:bold;
 }
 
 #history {
-margin: 3px;
-padding:5px;
-text-align:center;
-font-size:20px;
-border: 5px solid rgb(48, 47, 47);
-border-radius: 10px;
-height: 100px;
-width: 200px;
+  margin: 3px;
+  padding: 5px;
+  text-align: center;
+  font-size: 20px;
+  border: 5px solid rgb(48, 47, 47);
+  border-radius: 10px;
+  height: 100px;
+  width: 200px;
 }
-

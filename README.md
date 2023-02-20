@@ -25,12 +25,9 @@
 
 ![image](https://user-images.githubusercontent.com/115055273/217969570-18d8150b-f3ef-4fe5-a7e7-64966cba2b25.png)
 
-- The previous city you searched for will appear in the box below the current city, click on the previous city, and you will be able to pull up the weather. 
+- The previous city you searched for will appear in the box below the current city, click on the previous city, and you will be able to pull up the weather.
 
 ![image](https://user-images.githubusercontent.com/115055273/217969841-46c2e2b3-fc56-4571-b06d-ffba049be5fa.png)
-
-## Known Issues
-- Need to add Humidity, and Humidity.
 
 ## Credits
 
@@ -38,6 +35,7 @@ Collaborators:
 
 - George Jordan (xasdfaf)
 - Brian Mojica (Brainybrian316)
+- Mila Hose (milahose)
 
 Tutorials / References to complete this project:
 

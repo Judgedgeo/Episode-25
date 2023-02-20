@@ -2,6 +2,7 @@ function GetInfo(btnCity) {
 
     var newName = btnCity || document.getElementById("cityInput").value;
     var cityName = document.getElementById("cityName");
+
     cityName.innerHTML = "--" + newName + "--";
     var apiEndpoint = 'https://api.openweathermap.org/data/2.5/forecast'
     apiEndpoint += '?q=' + encodeURIComponent(newName);
@@ -15,11 +16,12 @@ function GetInfo(btnCity) {
         .then(data => {
             for (var i = 0; i < 6; i++) {
                 var weatherItem = data.list[i].main;
-                // temp_min, temp_max
+                var windItem = data.list[i].wind;
+                // temp_min, temp_max,humidity and wind
                 document.getElementById("day" + (i + 1) + "Min").innerHTML = " Min: " + weatherItem.temp_min + "°";
                 document.getElementById("day" + (i + 1) + "Max").innerHTML = " Max: " + weatherItem.temp_max + "°";
                 document.getElementById("day" + (i + 1) + "Humidity").innerHTML = " Humidity: " + weatherItem.humidity + "%";
-                document.getElementById("day" + (i + 1) + "Speed").innerHTML = " Wind: " + weatherItem.speed + "";
+                document.getElementById("day" + (i + 1) + "Speed").innerHTML = " Wind: " + windItem.speed + " mph";
 
                 let history = JSON.parse(localStorage.getItem("history")) || []
                 if (!history.includes(newName.toLowerCase())) {
